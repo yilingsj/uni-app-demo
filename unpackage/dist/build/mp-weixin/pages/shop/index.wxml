@@ -1,0 +1,1 @@
+<view class="content data-v-82bdf07e"><view class="cell red data-v-82bdf07e">{{"当前页面栈数量为："+leng}}</view><navigator url="/pages/shop/list?id=10" hover-class="className" class="data-v-82bdf07e"><button class="data-v-82bdf07e">前往商品列表页</button></navigator></view>

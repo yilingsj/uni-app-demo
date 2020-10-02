@@ -1,52 +1,38 @@
+<!--
+ * @Description: 首页
+ * @Author: yilingsj（315800015@qq.com）
+ * @Date: 2020-10-02 11:11:05
+ * @LastEditors: yilingsj（315800015@qq.com）
+ * @LastEditTime: 2020-10-02 14:42:53
+-->
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+  <view class="content">
+    <view class="cell">此demo作用：1是为了复现页面栈超10层无法点击；2是提供linkJump 这个方法解决问题。</view>
+    <view class="cell red">当前页面栈数量为：{{leng}}</view>
+    <navigator url="/pages/shop/detail?id=1" hover-class="className">
+      <button>前往商品详情页</button>
+    </navigator>
+    <view>
+      原文地址：<textarea name="" id="" cols="30" rows="10">http://www.yilingsj.com/xwzj/2020-10-01/uni-app-mistakes-made.html</textarea>
+    </view>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+export default {
+  computed: {
+    leng () { // 页面栈长度
+      return getCurrentPages().length
+    }
+  },
+  onLoad () {
 
-		},
-		methods: {
+  },
+  methods: {
 
-		}
-	}
+  }
+}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style lang="stylus" scoped>
 </style>
