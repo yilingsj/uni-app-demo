@@ -1,6 +1,5 @@
-# uni-app-demo
-记录自己在使用uni-app开发微信小程序时遇到的一些坑
+# 新增demo: uni-app跨端开发微信小程序之chooseLocation打开地图并实现定位功能
+功能说明：该demo可直接用于项目中，已实现用户首次进入时直接拉起授权的弹窗，当用户拒绝后在使用过程中会继续验证并引导用户手动开启定位功能。
 
-已更新列表如下：
-## 新增demo: uni-app跨端开发微信小程序之页面栈超过10层时无法跳转的解决方案
-分支：[dev-pagestack-20201002](https://github.com/yilingsj/uni-app-demo/tree/dev-pagestack-20201002)
+## 详细文章
+[uni-app跨端开发微信小程序之wx.chooseLocation打开地图并实现定位功能](http://www.yilingsj.com/xwzj/2020-10-04/uni-app-wx-chooseLocation.html)
