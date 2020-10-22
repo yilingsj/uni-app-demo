@@ -1,0 +1,286 @@
+<!--
+ * @Description:
+ * @Author: yilingsj（315800015@qq.com）
+ * @Date: 2020-09-25 17:19:07
+ * @LastEditors: yilingsj（315800015@qq.com）
+ * @LastEditTime: 2020-10-22 14:27:52
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <meta name="viewport"
+    content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>微信jssdk 分享接口</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .input {
+      min-height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+    }
+
+    button {
+      margin: 10px auto;
+      cursor: pointer;
+      min-height: 40px;
+      width: 100%;
+    }
+
+    .shareH5_popup {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, .7);
+      z-index: 999;
+      cursor: pointer;
+      display: none;
+    }
+
+    .is_block {
+      display: block !important
+    }
+
+    .shareH5_menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      padding: 10px;
+      font-size: 14px;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .shareH5_menu img {
+      display: block;
+      margin: 0 auto 10px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .icon-share {
+      position: fixed;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      display: none;
+    }
+
+    .flex {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    .column-2 {
+      width: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>Please enable JavaScript to continue.</strong>
+  </noscript>
+  <div class="content">
+    <input type="text" name="title" class="input" placeholder="请输入分享的标题">
+    <button class="handleShare">点我分享</button>
+    <a href="/weixin-sdk/">前往 vue 页面</a>
+    <!-- 分享弹层 -->
+    <div class="shareH5_popup">
+      <div class="shareH5_menu flex">
+        <div class="column-2 share__item">
+          <img class="icon" src="image/icon-weixin.png">
+          分享给朋友
+        </div>
+        <div class="column-2 share__item">
+          <img class="icon" src="image/icon-pengyouquan.png">
+          分享到朋友圈
+        </div>
+      </div>
+      <img src="image/icon-share.png" class="icon-share">
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/ua.js"></script>
+<script src="js/vconsole.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+
+<script>
+  var vConsole = new VConsole();
+  /* #ifdef  H5 */
+  const url = location.href.split('#')[0]
+  const data = {
+    url: url
+  }
+  getJsSDK({
+    url: 'https://换成你的服务器地址/api/index/getJsSDK',
+    data: data,
+    callback: res => {
+      console.log('res=', res)
+    }
+  })
+  /* #endif */
+
+  $(document).ready(function () {
+    // 显示弹窗
+    $('.handleShare').on('click', function () {
+      /* #ifdef  H5 */
+      const url = location.href.split('#')[0]
+      let data = {
+        url: url,
+        title: $('.input').val() || '分享标题',
+        describe: '分享描述',
+        imgUrl: 'http://images.fengshengshuqi.com/avatar/noavatar.jpg',
+      }
+      goShare({
+        data: data,
+        callback: () => {
+          $('.shareH5_popup').toggleClass('is_block')
+          $('.shareH5_menu').show()
+          $('.icon-share').hide()
+        },
+      })
+      /* #endif */
+    })
+    // 弹窗中点朋友，朋友圈
+    $('.share__item').on('click', function () {
+      $('.shareH5_menu').hide()
+      $('.icon-share').show()
+      event.stopPropagation()
+    })
+    // 点击遮罩背景
+    $('.shareH5_popup').on('click', function () {
+      $('.shareH5_popup').removeClass('is_block')
+      event.stopPropagation()
+    })
+  })
+
+  /**
+   * @author: yilingsj（315800015@qq.com）
+   * @description: 微信sdk
+   * @param {type}
+   * @return {type}
+   * @Date: 2020-10-14 11:22:32
+   */
+  function getJsSDK({ url, data, callback }) {
+    if (data && data.url) {
+      data.url = data.url.split('#')[0]
+    }
+    return $.ajax({
+      url: url,
+      data: data,
+      success: res => {
+        if (res && res.data) {
+          wx.config({
+            debug: false,
+            appId: res.data.appId,
+            timestamp: res.data.timestamp,
+            nonceStr: res.data.nonceStr,
+            signature: res.data.signature,
+            jsApiList: res.data.jsApiList
+          })
+          wx.ready(function () {
+            wx.checkJsApi({
+              jsApiList: res.data.jsApiList,
+              success: (res) => {
+                console.log('%c 支持的接口 ', 'color:#f00', res);
+              },
+              fail: (res) => {
+                console.log('支持的接口 fail', res);
+              },
+            });
+          })
+          wx.error(function (res) {
+            console.log('%c 微信jssdk配置失败', 'color:#f00', res)
+          })
+          callback && callback(res)
+        }
+      },
+      fail: err => {
+        console.log('%c jsSDK初始化失败', 'color:#f00', err)
+      }
+    })
+  }
+  /**
+   * @author: yilingsj（315800015@qq.com）
+   * @description: 分享
+   * @param {*} data 分享的data（包含标题、描述、url、图片）
+   * @param {*} callback 回调方法
+   * @return {*}
+   * @Date: 2020-10-21 17:24:11
+   */
+  function goShare({ data, callback, }) {
+    /* #ifdef H5 */
+    let msg = {
+      code: 10000,
+      type: 'shareurl',
+      message: '分享',
+      result: data || {
+        url: location.href,
+        title: '邀请好友得红包',
+        describe: '快快邀请好友加入吧，加入享福利',
+        imgUrl: 'http://images.fengshengshuqi.com/avatar/noavatar.jpg',
+      }
+    }
+    if (browser.versions.weixin) { // 微信公众号中
+      callback && callback()
+      const shareData = {
+        title: msg.result.title, // 分享标题
+        desc: msg.result.describe, // 分享描述
+        link: msg.result.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: msg.result.imgUrl,
+        success: function (res) {
+          console.log('微信sdk分享 成功', res)
+        },
+        fail: function (res) {
+          console.log('微信sdk分享 失败', res)
+        },
+        cancel: function (res) {
+          console.log('微信sdk分享 取消', res)
+        }
+      }
+      wx.onMenuShareAppMessage(shareData)
+      wx.onMenuShareTimeline(shareData)
+      wx.onMenuShareQQ(shareData)
+      wx.onMenuShareWeibo(shareData)
+      wx.onMenuShareQZone(shareData)
+      wx.updateAppMessageShareData(shareData)
+      wx.updateTimelineShareData(shareData)
+    } else {
+      alert('当前客户端不支持此操作！请在微信中打开')
+    }
+    /* #endif  */
+  }
+</script>

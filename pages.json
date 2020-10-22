@@ -1,0 +1,16 @@
+{
+  "pages": [
+      {
+          "path": "pages/index-sdk/index-sdk",
+          "style": {
+              "navigationBarTitleText": "微信jssdk分享接口"
+          }
+      }
+  ],
+  "globalStyle": {
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "微信jssdk分享接口",
+      "navigationBarBackgroundColor": "#F8F8F8",
+      "backgroundColor": "#F8F8F8"
+  }
+}
