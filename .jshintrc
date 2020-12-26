@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "$": false,
+    "window": false,
+    "document": false
+  },
+  "asi": true,
+  "esversion": 6
+}
