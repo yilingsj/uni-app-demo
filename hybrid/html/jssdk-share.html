@@ -3,7 +3,7 @@
  * @Author: yilingsj（315800015@qq.com）
  * @Date: 2020-09-25 17:19:07
  * @LastEditors: yilingsj（315800015@qq.com）
- * @LastEditTime: 2020-10-22 14:27:52
+ * @LastEditTime: 2020-12-29 10:51:51
 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -36,6 +36,7 @@
       box-sizing: border-box;
       display: block;
       width: 100%;
+      margin-bottom: 10px;
     }
 
     button {
@@ -103,6 +104,11 @@
       width: 50%;
       cursor: pointer;
     }
+
+    .msg {
+      margin-top: 20px;
+      color: #999;
+    }
   </style>
 </head>
 
@@ -111,9 +117,12 @@
     <strong>Please enable JavaScript to continue.</strong>
   </noscript>
   <div class="content">
-    <input type="text" name="title" class="input" placeholder="请输入分享的标题">
+    <input type="text" name="title" class="input title" placeholder="请输入分享的标题">
+    <input type="text" name="describe" class="input describe" placeholder="请输入分享的描述">
+    <input type="text" name="imgUrl" class="input imgUrl" placeholder="请输入分享的图片地址">
     <button class="handleShare">点我分享</button>
     <a href="/weixin-sdk/">前往 vue 页面</a>
+    <div class="msg">若分享失败，请看控制台中请求的接口是否报错。若报错，可能是接口有变动，请拉完项目后修改接口为您自己的即可。</div>
     <!-- 分享弹层 -->
     <div class="shareH5_popup">
       <div class="shareH5_menu flex">
@@ -160,9 +169,9 @@
       const url = location.href.split('#')[0]
       let data = {
         url: url,
-        title: $('.input').val() || '分享标题',
-        describe: '分享描述',
-        imgUrl: 'http://images.fengshengshuqi.com/avatar/noavatar.jpg',
+        title: $('.title').val() || '分享标题',
+        describe: $('.describe').val() || '默认分享描述',
+        imgUrl: $('.imgUrl').val() || 'http://images.fengshengshuqi.com/avatar/noavatar.jpg',
       }
       goShare({
         data: data,
