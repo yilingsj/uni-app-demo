@@ -1,7 +1,16 @@
 # uni-app-demo
 记录自己在使用uni-app开发微信小程序时遇到的一些坑
 
-已更新列表如下：
+已更新列表如下（最后更新于2021/05/23）：
+## 新增demo: uni-app跨端开发微信小程序之HBuilderX项目实现多环境开发
+分支：[dev-uni-app-HBuilderX-to-vue-cli-20210523](https://github.com/yilingsj/uni-app-demo/tree/dev-uni-app-HBuilderX-to-vue-cli-20210523)
+
+## 新增demo: 手把手带你写一个用程序自动打开微信开发者工具的小插件
+分支：[dev-uni-app-vue-cli-openDevTools-20210523](https://github.com/yilingsj/uni-app-demo/tree/dev-uni-app-vue-cli-openDevTools-20210523)
+
+## 新增demo: nodejs与后端通信并动态打包项目以适应多环境开发
+分支：[dev-uni-app-vue-cli-nodejs-20210523](https://github.com/yilingsj/uni-app-demo/tree/dev-uni-app-vue-cli-nodejs-20210523)
+
 ## 新增demo: uni-app跨端开发之生成小程序码和调试scene参数爬坑指南
 分支：[dev-wxacode-getUnlimited-20201226](https://github.com/yilingsj/uni-app-demo/tree/dev-wxacode-getUnlimited-20201226)
 
