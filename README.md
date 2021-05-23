@@ -5,17 +5,25 @@
 
 ## 修改说明：
 1、修改openDevTools/config.js文件中的微信开发者工具路径
+
 2、根据自己的项目情况来修改src/config.js中的相关配置
+
 3、package.json 中新增的6条打包命令（见下方如何使用），可根据实际情况进行修改
 
 
 ## 如何使用：
 自动编译并打开微信开发者工具的命令（开发中使用）：
+
 dev:mp-weixin-test 测试环境
+
 dev:mp-weixin-pre  预上线环境
+
 dev:mp-weixin-prod  正式环境
 
 自动编译并打开微信开发者工具的命令（需要上传时执行）：
+
 build:mp-weixin-test 测试环境
+
 build:mp-weixin-pre  预上线环境
+
 build:mp-weixin-prod  正式环境
