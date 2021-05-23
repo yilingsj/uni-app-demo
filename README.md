@@ -1,15 +1,21 @@
-# uni-app-demo
-记录自己在使用uni-app开发微信小程序时遇到的一些坑
+# uni-app跨端开发微信小程序之nodejs与后端通信并动态打包项目以适应多环境开发
 
-已更新列表如下：
-## 新增demo: uni-app跨端开发之生成小程序码和调试scene参数爬坑指南
-分支：[dev-wxacode-getUnlimited-20201226](https://github.com/yilingsj/uni-app-demo/tree/dev-wxacode-getUnlimited-20201226)
+## 目的
+在使用命令行打包时，自定义脚本会与后端接口通信，动态修改或生成一些新的配置，以适用于不同环境下的定制需求。全程靠命令行自动发起请求、修改配置文件、自动编译，解放双手不是梦！
 
-## 新增demo: uni-app跨端开发微信小程序之微信公众号jssdk调用分享接口
-分支：[dev-weixin-jssdk-20201022](https://github.com/yilingsj/uni-app-demo/tree/dev-weixin-jssdk-20201022)
+## 修改说明：
+1、修改openDevTools/config.js文件中的微信开发者工具路径
+2、根据自己的项目情况来修改src/config.js中的相关配置
+3、package.json 中新增的6条打包命令（见下方如何使用），可根据实际情况进行修改
 
-## 新增demo: uni-app跨端开发微信小程序之chooseLocation打开地图并实现定位功能
-分支：[dev-wx-chooseLocation-20201004](https://github.com/yilingsj/uni-app-demo/tree/dev-wx-chooseLocation-20201004)
 
-## 新增demo: uni-app跨端开发微信小程序之页面栈超过10层时无法跳转的解决方案
-分支：[dev-pagestack-20201002](https://github.com/yilingsj/uni-app-demo/tree/dev-pagestack-20201002)
+## 如何使用：
+自动编译并打开微信开发者工具的命令（开发中使用）：
+dev:mp-weixin-test 测试环境
+dev:mp-weixin-pre  预上线环境
+dev:mp-weixin-prod  正式环境
+
+自动编译并打开微信开发者工具的命令（需要上传时执行）：
+build:mp-weixin-test 测试环境
+build:mp-weixin-pre  预上线环境
+build:mp-weixin-prod  正式环境
