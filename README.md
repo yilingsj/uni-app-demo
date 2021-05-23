@@ -30,4 +30,4 @@ build:mp-weixin-prod  正式环境
 
 
 ## 原文地址：
-[uni-app跨端开发微信小程序之手把手带你写一个用程序自动打开微信开发者工具的小插件](http://www.yilingsj.com/xwzj/2021-05-04/uni-app-vue-cli-openDevTools.html)
+[uni-app跨端开发微信小程序之nodejs与后端通信并动态打包项目以适应多环境开发](http://www.yilingsj.com/xwzj/2021-05-22/uni-app-vue-cli-nodejs-request.html)
