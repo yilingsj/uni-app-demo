@@ -1,15 +1,22 @@
-# uni-app-demo
-记录自己在使用uni-app开发微信小程序时遇到的一些坑
+# uni-app跨端开发微信小程序之HBuilderX项目实现多环境开发
 
-已更新列表如下：
-## 新增demo: uni-app跨端开发之生成小程序码和调试scene参数爬坑指南
-分支：[dev-wxacode-getUnlimited-20201226](https://github.com/yilingsj/uni-app-demo/tree/dev-wxacode-getUnlimited-20201226)
+## 解决的问题
+由于项目有测试环境、预上线环境、正式环境，而通过HBuilderX编译器打包的话只有两个环境，所以我们需要用命令行的方式创建多个环境以适用于公司项目。
 
-## 新增demo: uni-app跨端开发微信小程序之微信公众号jssdk调用分享接口
-分支：[dev-weixin-jssdk-20201022](https://github.com/yilingsj/uni-app-demo/tree/dev-weixin-jssdk-20201022)
+## 修改说明：
+1、根据自己的项目情况来修改src/config.js中的相关配置
 
-## 新增demo: uni-app跨端开发微信小程序之chooseLocation打开地图并实现定位功能
-分支：[dev-wx-chooseLocation-20201004](https://github.com/yilingsj/uni-app-demo/tree/dev-wx-chooseLocation-20201004)
+2、package.json 中新增的3行打包命令（见下方如何使用），可根据实际情况进行修改
 
-## 新增demo: uni-app跨端开发微信小程序之页面栈超过10层时无法跳转的解决方案
-分支：[dev-pagestack-20201002](https://github.com/yilingsj/uni-app-demo/tree/dev-pagestack-20201002)
+
+## 如何使用：
+在终端工具中输入下方命令，然后手动打开微信开发者工具
+
+dev:mp-weixin-test 测试环境
+
+dev:mp-weixin-pre  预上线环境
+
+dev:mp-weixin-prod  正式环境
+
+## 原文地址：
+[uni-app跨端开发微信小程序之HBuilderX项目实现多环境开发](http://www.yilingsj.com/xwzj/2021-05-02/uni-app-HBuilderX-to-vue-cli.html)
