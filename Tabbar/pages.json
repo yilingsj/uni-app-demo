@@ -1,0 +1,41 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uView UI",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/js/index",
+			"style": {
+				"navigationBarTitleText": "工具",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/template/index",
+			"style": {
+				"navigationBarTitleText": "模板",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tabdiy/index",
+			"style": {
+				"navigationBarTitleText": "tabdiy",
+				"enablePullDownRefresh": true
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uView UI",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
